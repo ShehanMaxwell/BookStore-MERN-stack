@@ -4,7 +4,11 @@ import { Routes, Route } from 'react-router-dom';
 export const App = () => {
   return (
     <Routes>
-      <Route/>
+      <Route path='' element={} />
+      <Route path='' element={} />
+      <Route path='' element={} />
+      <Route path='' element={} />
+      <Route path='' element={} />
     </Routes>
   )
 };
