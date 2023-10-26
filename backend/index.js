@@ -7,7 +7,7 @@ import cors from 'cors';
 
 const app = express();
 
-// Middleware for parsing request body
+// Middleware for parsing request bodyy
 app.use(express.json());
 
 // Middleware for parsing CORS POLICY
