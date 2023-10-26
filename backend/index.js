@@ -1,4 +1,4 @@
-import express, { request, response } from 'express';
+import express from 'express';
 import { PORT, mongoDBURL } from './config.js';
 import mongoose from 'mongoose';
 import { Book } from './models/bookModel.js';
@@ -7,19 +7,12 @@ import cors from 'cors';
 
 const app = express();
 
-// Middleware for parsing request bodyy
+// Middleware for parsing request body
 app.use(express.json());
 
 // Middleware for parsing CORS POLICY
-// Option 1: Allow all origins with default of cors(*)
+// Option 1: Allow all origins with the default of cors(*)
 app.use(cors());
-
-// Option 2: allow custom
-// cors({
-//   origin: 'http://localhost:3000',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type'],
-// });
 
 app.get('/', (request, response) => {
   console.log(request);
@@ -30,12 +23,15 @@ app.get('/', (request, response) => {
 
 app.use('/books', booksRoute);
 
+const defaultPort = 5555;
+const port = process.env.PORT || defaultPort;
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
     console.log('App connected to the database');
-    app.listen(PORT, () => {
-      console.log(`App is listening to port ${PORT}`);
+    app.listen(port, () => {
+      console.log(`App is listening on port ${port}`);
     });
   })
   .catch((error) => {
