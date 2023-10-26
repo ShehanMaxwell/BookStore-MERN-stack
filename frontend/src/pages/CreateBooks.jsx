@@ -5,7 +5,7 @@ import Spinner from '../components/spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export const CreateBooks = () => {
+const CreateBooks = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [publishYear, setPublishYear] = useState('');
